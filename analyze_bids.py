@@ -46,13 +46,13 @@ def analyze_bidding_data(csv_path):
             '总竞价次数': total_bids,
             '初始竞价价格': initial_price,
             '最高竞价价格': max_price,
-            '每次竞价相对最近一次出价的时间差的平均值(秒)': avg_time_diff_global.total_seconds() if pd.notna(avg_time_diff_global) else None,
-            '每次竞价相对自己最近一次出价的时间差的平均值(秒)': avg_time_diff_self.total_seconds() if pd.notna(avg_time_diff_self) else None,
-            '每次竞价相对最近一次出价的金额差的平均值': avg_price_diff_global,
-            '每次竞价相对自己最近一次出价的金额差的平均值': avg_price_diff_self,
-            '每次竞价相对最近一次出价的金额差与最近一次出价的百分比的平均值': avg_price_diff_global_pct,
-            '每次竞价相对自己最近一次出价的金额差与总金额的百分比平均值': avg_price_diff_self_pct,
-            '震慑性加价次数(>3%)': shock_bids
+            '相对全局时间差均值(秒)': avg_time_diff_global.total_seconds() if pd.notna(avg_time_diff_global) else None,
+            '相对自己时间差均值(秒)': avg_time_diff_self.total_seconds() if pd.notna(avg_time_diff_self) else None,
+            '相对全局金额差均值': avg_price_diff_global,
+            '相对自己金额差均值': avg_price_diff_self,
+            '相对全局金额差百分比均值': avg_price_diff_global_pct,
+            '相对自己金额差百分比均值': avg_price_diff_self_pct,
+            '震慑性加价次数': shock_bids
         }
     result_df = pd.DataFrame(bidder_stats.values())
     result_df = result_df.sort_values('最高竞价价格', ascending=False)
